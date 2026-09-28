@@ -1,0 +1,66 @@
+.field { padding: 24px 20px; }
+.fieldHeader { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr) 44px 52px 32px;
+  gap: 16px;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 8px;
+  list-style: none;
+}
+summary.row { cursor: pointer; }
+summary.row::-webkit-details-marker { display: none; }
+summary.row:hover { background: var(--color-surface-soft); }
+summary.row:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; border-radius: 4px; }
+.axisRow { min-height: 28px; color: var(--color-muted); font-size: 10.5px; }
+.axisRow .count, .axisRow .percent { font-size: inherit; font-weight: 400; color: inherit; }
+.axis { position: relative; height: 20px; font-variant-numeric: tabular-nums; }
+.axis > span { position: absolute; transform: translateX(-50%); }
+.axis > span:first-child { transform: none; }
+.axis > span:last-child { transform: translateX(-100%); }
+.label { display: flex; align-items: center; gap: 8px; min-width: 0; padding: 10px 0; color: var(--color-ink-soft); font-size: 12.5px; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
+.label > span { min-width: 0; }
+.count, .percent { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; font-size: 12px; }
+.count { color: var(--color-ink); font-weight: 600; }
+.percent { color: var(--color-muted); }
+.plot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  min-height: 44px;
+  background-image: linear-gradient(to right, var(--color-line) 1px, transparent 1px);
+  background-size: 25% 100%;
+}
+.plot::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 1px; background: var(--color-line); }
+.bar { display: block; height: 16px; border-radius: 0 2px 2px 0; background: var(--distribution-accent); }
+.parent[open] > summary .label { color: var(--distribution-accent); }
+.children { background: var(--color-surface-soft); border-bottom: 1px solid var(--color-line); }
+.subtype .label { padding-left: 24px; font-weight: 400; font-size: 12px; }
+.subtype .bar { height: 10px; background: color-mix(in srgb, var(--distribution-accent) 65%, var(--color-surface)); }
+.subtype .count { font-weight: 500; }
+.copy { position: relative; display: flex; justify-content: flex-end; }
+.copyButton { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 4px; color: var(--color-muted); cursor: pointer; }
+.copyButton:hover { background: var(--color-accent-soft); color: var(--color-accent); }
+.copyButton:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.copyButton:disabled { opacity: .4; cursor: default; }
+.copyFallback { position: absolute; right: 0; top: 100%; z-index: 10; width: 260px; padding: 12px; border: 1px solid var(--color-line); border-radius: 6px; background: var(--color-surface); color: var(--color-muted); font-size: 12px; }
+.copyFallback textarea { display: block; width: 100%; min-height: 80px; margin-top: 8px; font-family: monospace; color: var(--color-ink); }
+
+@media (max-width: 640px) {
+  .field { padding: 20px 12px; }
+  .fieldHeader { flex-direction: column; gap: 6px; margin-bottom: 16px; padding: 0 8px; }
+  .row { grid-template-columns: minmax(0, 1fr) 32px 44px 32px; column-gap: 8px; row-gap: 0; }
+  .row > .label { grid-column: 1; }
+  .row > .count { grid-column: 2; grid-row: 1; }
+  .row > .percent { grid-column: 3; grid-row: 1; }
+  .row > .copy { grid-column: 4; grid-row: 1; }
+  .row > .plot { grid-column: 1 / -1; grid-row: 2; min-height: 28px; margin-bottom: 8px; }
+  .axisRow { row-gap: 12px; margin-bottom: 4px; }
+  .axisRow > .axis { grid-column: 1 / -1; grid-row: 2; }
+  .label { padding: 10px 0 2px; }
+  .subtype .label { padding-left: 16px; }
+  .bar { height: 14px; }
+}

@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ── Design tokens ─────────────────────────────────────────────── */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Brand blue — slightly richer than before */
+  --color-accent:        oklch(52% 0.22 258);
+  --color-accent-strong: oklch(44% 0.22 258);
+  --color-accent-soft:   oklch(96.5% 0.03 258);
+  --color-accent-mid:    oklch(60% 0.18 258);
+
+  /* Ink — warm-neutral tinted toward brand blue */
+  --color-ink:           oklch(13% 0.012 258);
+  --color-ink-soft:      oklch(22% 0.014 258);
+  --color-muted:         oklch(48% 0.018 258);
+  --color-muted-soft:    oklch(65% 0.012 258);
+
+  /* Surfaces — all tinted toward brand hue, not neutral-gray */
+  --color-surface:        oklch(99.5% 0.004 258);
+  --color-surface-soft:   oklch(97.5% 0.008 258);
+  --color-surface-sunken: oklch(94.5% 0.012 258);
+  --color-bg:             oklch(93% 0.016 258);
+
+  /* Borders */
+  --color-line:           oklch(88% 0.012 258);
+  --color-line-strong:    oklch(82% 0.016 258);
+
+  --shadow-xs:     0 1px 2px rgb(0 0 0 / 0.05);
+  --shadow-accent: 0 4px 16px oklch(52% 0.22 258 / 0.28);
+
+  /* Codebook category palette — A through F */
+  --color-cat-a:      oklch(42% 0.14 165);   /* emerald — User & Context */
+  --color-cat-a-soft: oklch(96% 0.04 165);
+  --color-cat-a-line: oklch(78% 0.10 165);
+  --color-cat-b:      oklch(46% 0.18 258);   /* blue — RAG Mechanism */
+  --color-cat-b-soft: oklch(96% 0.04 258);
+  --color-cat-b-line: oklch(78% 0.12 258);
+  --color-cat-c:      oklch(44% 0.14 212);   /* teal — Transparency */
+  --color-cat-c-soft: oklch(96% 0.04 212);
+  --color-cat-c-line: oklch(78% 0.10 212);
+  --color-cat-d:      oklch(42% 0.16 145);   /* green — User Control */
+  --color-cat-d-soft: oklch(96% 0.04 145);
+  --color-cat-d-line: oklch(78% 0.10 145);
+  --color-cat-e:      oklch(52% 0.16 72);    /* amber — Paper Metadata */
+  --color-cat-e-soft: oklch(97% 0.04 72);
+  --color-cat-e-line: oklch(80% 0.12 72);
+  --color-cat-f:      oklch(46% 0.20 22);    /* rose — Evaluation */
+  --color-cat-f-soft: oklch(97% 0.04 22);
+  --color-cat-f-line: oklch(80% 0.12 22);
+
+  /* radius scale — use only these levels */
+  --radius-sm: 6px;   /* small chips, inline controls */
+  --radius-md: 10px;  /* buttons, inputs */
+  --radius-lg: 14px;  /* cards, panels */
+  --radius-xl: 18px;  /* heroes, large containers */
+
+  /* decision-state palette: text / soft bg / border per state */
+  --color-include:       oklch(38% 0.14 162);
+  --color-include-soft:  oklch(96% 0.05 162);
+  --color-include-line:  oklch(76% 0.10 162);
+  --color-exclude:       oklch(38% 0.18 20);
+  --color-exclude-soft:  oklch(97% 0.04 20);
+  --color-exclude-line:  oklch(76% 0.12 20);
+  --color-maybe:         oklch(40% 0.14 58);
+  --color-maybe-soft:    oklch(97% 0.05 78);
+  --color-maybe-line:    oklch(82% 0.14 80);
+  --color-maybe-strong:  oklch(56% 0.18 58);
+  --color-neutral-tone:  oklch(42% 0.02 258);
+  --color-neutral-soft:  oklch(95% 0.01 258);
+  --color-neutral-line:  oklch(80% 0.02 258);
+  --color-sky-tone:      oklch(40% 0.16 230);
+  --color-sky-soft:      oklch(96% 0.04 230);
+  --color-sky-line:      oklch(76% 0.12 230);
+
+  /* chart fills — brighter mid-tones for area/bar/ring fills */
+  --color-chart-accent:  oklch(60% 0.20 258);
+  --color-chart-include: oklch(58% 0.18 162);
+  --color-chart-maybe:   oklch(68% 0.18 72);
+  --color-chart-exclude: oklch(60% 0.22 22);
+  --color-chart-neutral: oklch(64% 0.04 258);
+  --color-chart-sky:     oklch(62% 0.18 230);
+}
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { min-height: 100%; }
+
+  body {
+    margin: 0;
+    font-feature-settings: "ss01" on, "cv11" on;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.004em;
+  }
+
+  button, input, select, textarea { font: inherit; color: inherit; }
+  a { text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3 { margin: 0; }
+}
+
+
+.scroll-thin::-webkit-scrollbar { width: 9px; height: 9px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 9px; }

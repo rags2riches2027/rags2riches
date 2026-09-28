@@ -1,0 +1,916 @@
+{
+  "title": "RAG in HCI — Final Data-Charting Codebook",
+  "conventions": [
+    "Single-select fields allow one code; multi-select fields allow multiple applicable codes.",
+    "Parentheses may capture reported subtype details.",
+    "none denotes an identified absence under the field-specific definition; not_reported denotes missing reporting."
+  ],
+  "pipeline": [
+    "A system may contain multiple pipelines that involve RAG. A generation endpoint is a generative-model invocation whose generation is conditioned at inference time by dynamically retrieved content, as defined under RAG. A pipeline is the complete path from one trigger to a single furthest downstream generation endpoint of this kind.",
+    "If an execution path branches into multiple furthest downstream RAG-conditioned generation endpoints, treat the path to each endpoint as a separate pipeline. For fields that describe pipeline properties, assess each pipeline separately and then combine the codes."
+  ],
+  "sections": [
+    {
+      "letter": "A",
+      "name": "User & Context",
+      "fields": [
+        {
+          "code": "A1",
+          "name": "User Group",
+          "selection": "Multi-select",
+          "description": "Target populations explicitly identified by the authors; do not infer them from study participant composition.",
+          "codes": [
+            {
+              "code": "everyday-users",
+              "definition": "General users in everyday contexts whose target population is not delimited by profession, age group, health condition, disability, social marginalization, or domain expertise. A situational description, such as visitors or travelers, does not itself establish a distinct demographic group."
+            },
+            {
+              "code": "children",
+              "definition": "Users under 13 years old"
+            },
+            {
+              "code": "students",
+              "definition": "Current students"
+            },
+            {
+              "code": "older-adults",
+              "definition": "Users aged 60 or older, or users explicitly described as older adults in the paper"
+            },
+            {
+              "code": "professionals",
+              "definition": "The target population is defined by a profession"
+            },
+            {
+              "code": "people-with-health-conditions",
+              "definition": "Users with a disease or chronic health condition"
+            },
+            {
+              "code": "people-with-disabilities",
+              "definition": "Users with disabilities; terminology follows the self-identification conventions of the relevant community"
+            },
+            {
+              "code": "marginalized-communities",
+              "definition": "Groups that are marginalized or underserved because of structural factors"
+            },
+            {
+              "code": "domain-novices",
+              "definition": "Users explicitly characterized as beginners or non-experts in the domain or activity supported by the system."
+            },
+            {
+              "code": "not_reported",
+              "definition": "The paper does not explicitly state a target population."
+            }
+          ]
+        },
+        {
+          "code": "A2",
+          "name": "Application Domain",
+          "selection": "Multi-select",
+          "description": "Based on Pang et al. (2025), with corpus-driven extensions.",
+          "codes": [
+            {
+              "code": "communication-and-writing",
+              "definition": "Writing and communication tasks, usually with writers as the main user group"
+            },
+            {
+              "code": "augmenting-capabilities",
+              "definition": "Technology that extends general cognitive, perceptual, or physical abilities, such as memory, attention, decision-making, perceptual alignment, or movement."
+            },
+            {
+              "code": "education-and-learning",
+              "definition": "Supports teaching and the learning of knowledge, skills, or operating procedures, including formal education, informal learning, skill practice, and software-use learning or instructional help-seeking. Include only when learning or teaching is an explicit supported purpose; general information retrieval, task execution, and model training do not by themselves qualify."
+            },
+            {
+              "code": "responsible-computing",
+              "definition": "Ethical and social effects of computing systems, especially in high-risk domains and for vulnerable groups, including fairness, information harms, and privacy"
+            },
+            {
+              "code": "programming",
+              "definition": "Any aspect of software development and programming tasks"
+            },
+            {
+              "code": "well-being-and-health",
+              "definition": "Managing health conditions, or interacting with health data or healthcare providers"
+            },
+            {
+              "code": "design",
+              "definition": "Any type of design work, usually with designers as the main user group"
+            },
+            {
+              "code": "accessibility-and-aging",
+              "definition": "Technology for people with disabilities and older adults"
+            },
+            {
+              "code": "art and creativity",
+              "definition": "Creative processes and tools that support creativity"
+            },
+            {
+              "code": "scientific-research",
+              "definition": "Systems that support academic and scientific research practices, including literature work, research ideation, policy research, and development research"
+            },
+            {
+              "code": "knowledge-work",
+              "definition": "Systems that support workplace knowledge work and organizational processes, including organizational memory, decision support, data navigation, and professional information practices"
+            },
+            {
+              "code": "game-and-entertainment",
+              "definition": "Systems supporting gameplay, role-playing, game-world interaction, or entertainment experiences. Code programming or design additionally only when those activities are themselves supported tasks."
+            },
+            {
+              "code": "reliability-and-validity-of-llms",
+              "definition": "Evaluating or improving LLM outputs themselves.",
+              "note": "Not used in the current corpus of 100 included papers."
+            },
+            {
+              "code": "not_reported",
+              "definition": "The paper does not describe the application domain."
+            }
+          ]
+        },
+        {
+          "code": "A3",
+          "name": "User Collaboration Mode",
+          "selection": "Single-select",
+          "description": null,
+          "codes": [
+            {
+              "code": "single-user",
+              "definition": "One user interacts with the system independently"
+            },
+            {
+              "code": "multi-user",
+              "definition": "Multiple users collaborate, such as by co-editing, completing a task together, or seeing one another's actions"
+            },
+            {
+              "code": "not_reported",
+              "definition": "The paper does not describe the collaboration mode."
+            }
+          ]
+        },
+        {
+          "code": "A4",
+          "name": "RAG Interaction Form",
+          "selection": "Multi-select",
+          "description": null,
+          "codes": [
+            {
+              "code": "conversational-UI",
+              "definition": "A multi-turn natural-language conversation channel, with text or voice input and output"
+            },
+            {
+              "code": "graphical-UI",
+              "definition": "A substantial graphical interaction channel beyond conversation, such as visual components, dashboards, clicking, or dragging, including spatial UI elements rendered in XR"
+            },
+            {
+              "code": "embedded-in-host-UI",
+              "definition": "The interaction channel is built into the native interface of host software, such as Slack or WhatsApp."
+            },
+            {
+              "code": "tangible-UI",
+              "definition": "A manipulable physical object serves as an interface to digital information (TUI)."
+            },
+            {
+              "code": "embodied-UI",
+              "definition": "An interaction channel based on gestures, gaze, voice, or body movement rather than a traditional screen interface, including AR/VR devices, smart glasses, and smart speakers"
+            },
+            {
+              "code": "not_reported",
+              "definition": "The interaction form is not described."
+            }
+          ]
+        },
+        {
+          "code": "A5",
+          "name": "Purpose of Using RAG",
+          "selection": "Multi-select",
+          "description": "The function of the RAG module, based on the functional motivation explicitly stated by the authors.",
+          "codes": [
+            {
+              "code": "factual-grounding",
+              "definition": "The authors introduce RAG to improve accuracy, traceability, hallucination mitigation, or trustworthiness. Its function is to create a verifiable link between generated content and sources"
+            },
+            {
+              "code": "knowledge-extension",
+              "definition": "The authors introduce RAG to expand content coverage by supplying specialized, private, or real-time content that the LLM cannot be assumed to know"
+            },
+            {
+              "code": "information-synthesis",
+              "definition": "RAG retrieves and combines information from multiple sources to help users build an integrated understanding"
+            },
+            {
+              "code": "creative-support",
+              "definition": "RAG retrieves examples, styles, reference materials, or sources of inspiration to stimulate or constrain creative and divergent generation"
+            },
+            {
+              "code": "generation-conditioning",
+              "definition": "RAG retrieves templates, guidelines, rules, examples, personas, or prior records to constrain the style, identity, or compliance of LLM generation"
+            },
+            {
+              "code": "personalization",
+              "definition": "RAG retrieves user characteristics, preferences, interaction history, or the current context to make the output relevant to a specific user"
+            },
+            {
+              "code": "procedural-assistance",
+              "definition": "RAG retrieves operational or procedural knowledge to help the user complete specific task steps"
+            },
+            {
+              "code": "context-management",
+              "definition": "The authors explicitly use retrieval to select, limit, or organize input context to fit context-length limits, reduce context- processing cost, or mitigate reliability problems from excessively long context. Do not infer this function merely from the use of RAG."
+            },
+            {
+              "code": "not_reported",
+              "definition": "The RAG function is not described."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "letter": "B",
+      "name": "RAG Mechanism & Knowledge Representation",
+      "fields": [
+        {
+          "code": "B1",
+          "name": "Knowledge Sources",
+          "selection": "Multi-select",
+          "description": "Knowledge provenance: who produced it and where it originated.",
+          "codes": [
+            {
+              "code": "domain-knowledge",
+              "definition": "Expert-curated domain resources, such as documents, manuals, guides, policies, FAQs, datasets, and knowledge bases"
+            },
+            {
+              "code": "scientific-literature",
+              "definition": "Academic papers, PubMed, Semantic Scholar, and research databases"
+            },
+            {
+              "code": "personal-data",
+              "definition": "Data created or accumulated by the current user outside this system, such as notes, calendars, health records, photos, and activity logs"
+            },
+            {
+              "code": "web-content",
+              "definition": "Live web pages, search engine results, and RSS feeds"
+            },
+            {
+              "code": "interaction-history",
+              "definition": "Content from the current user or people in a shared interaction space in which the system participates, such as conversations, group messages, session records, and in-system annotations"
+            },
+            {
+              "code": "user-generated-content",
+              "definition": "Content created by other people outside the current interaction context, such as social media posts, forum content, app reviews, and public community contributions"
+            },
+            {
+              "code": "sensor-and-environment-data",
+              "definition": "Data describing the physical or virtual environment: wearable or IoT measurements, physiological and environmental signals, and software-maintained virtual-world objects, spatial relations, and current scene state. Virtual environment state need not originate from a physical sensor. Distinguish environment state from interaction history and external personal documents."
+            },
+            {
+              "code": "code-and-scripts",
+              "definition": "Code snippets, SQL scripts, automation rules, and few-shot code examples"
+            },
+            {
+              "code": "instructions-and-parameters",
+              "definition": "Formal non-code knowledge, such as operating instructions, instruction libraries, parameter sets, and configuration templates"
+            },
+            {
+              "code": "not_reported",
+              "definition": "The knowledge source is not described."
+            }
+          ]
+        },
+        {
+          "code": "B2",
+          "name": "Index Preprocessing",
+          "selection": "Multi-select",
+          "description": "Transformations before indexing, grouped by output representation.",
+          "codes": [
+            {
+              "code": "chunking",
+              "definition": "Splits the original material into smaller retrieval units"
+            },
+            {
+              "code": "metadata-annotation",
+              "definition": "Adds structured descriptors, such as source, time, category, or confidence, to a retrieval unit without changing the unit's content. The descriptors support filtering, ranking, or provenance and are not themselves retrieved as content"
+            },
+            {
+              "code": "entity-extraction",
+              "definition": "Extracts entities, relations, or triples from the material to build a structured representation, such as a knowledge graph"
+            },
+            {
+              "code": "summarization",
+              "definition": "Summarizes and compresses the material before storing it in the index"
+            },
+            {
+              "code": "representation-conversion",
+              "definition": "Converts source material into another usable representation before indexing, including modality transcription, captioning, translation, feature derivation, propositionization, reconstructing text or document structure through document parsing, and organizing source content into structured fields or records. Equivalent serialization, JSON storage, or changing a file extension alone does not qualify."
+            },
+            {
+              "code": "synthetic-index-augmentation",
+              "definition": "Adds synthetic helper content generated specifically to support retrieval matching and stores it as a matching entry or auxiliary representation. When it is matched, the downstream module still receives the linked original material, not the helper content"
+            },
+            {
+              "code": "data-cleaning",
+              "definition": "Cleans the original data without creating new retrievable content"
+            },
+            {
+              "code": "none",
+              "definition": "The original knowledge is stored directly without preprocessing; use only when the paper explicitly states that no preprocessing was performed"
+            },
+            {
+              "code": "not_reported",
+              "definition": "The paper does not describe preprocessing"
+            }
+          ]
+        },
+        {
+          "code": "B3",
+          "name": "Knowledge Storage Form",
+          "selection": "Multi-select",
+          "description": "The structure in which knowledge is stored.",
+          "codes": [
+            {
+              "code": "dense-vector-store",
+              "definition": "Text or multimodal content is chunked and converted into high-dimensional vector embeddings for storage, such as in FAISS, Chroma, or Pinecone, or in any storage setup that uses an embedding model"
+            },
+            {
+              "code": "lexical/inverted-index",
+              "definition": "A traditional text search index based on keyword frequency or lexical matching, such as Elasticsearch, Lucene, TF-IDF, or the underlying storage for BM25"
+            },
+            {
+              "code": "knowledge-graph",
+              "definition": "Knowledge is represented as a network of entities (nodes) and relations (edges), such as Neo4j, RDF, semantic networks, or triple-based graphs"
+            },
+            {
+              "code": "record-based-storage",
+              "definition": "Knowledge stored as queryable rows, records, key-value entries, or documents, including relational databases, CSV/Excel tables, key-value stores, and document databases such as MongoDB. A strict relational schema is not required. Keep knowledge organized explicitly as entity-relation graphs, stored embedding vectors, and unprocessed original files in their respective categories; classify the reported knowledge representation rather than all capabilities of a software product."
+            },
+            {
+              "code": "raw",
+              "definition": "Knowledge is stored as original files without vectorization, graph conversion, or structured indexing, such as direct access to local txt, pdf, or jsonl files"
+            },
+            {
+              "code": "external-api",
+              "definition": "The system does not maintain persistent storage. Knowledge is obtained entirely through live calls to an external search engine or third-party API, such as Google Search API or Wikipedia API"
+            },
+            {
+              "code": "not_reported",
+              "definition": "The storage form is not described"
+            }
+          ]
+        },
+        {
+          "code": "B4",
+          "name": "Retrieval Trigger",
+          "selection": "Multi-select",
+          "description": "The nearest upstream decision that determines whether retrieval occurs. Mechanical processing and fixed module handoffs do not create a new trigger. Assess each retrieval; a guaranteed serial retrieval retains the original trigger.",
+          "codes": [
+            {
+              "code": "user-query",
+              "definition": "The user intentionally submits language input, such as a text or voice query, question, or prompt, and that input necessarily leads to retrieval under the system's fixed workflow. Fixed parsing, rewriting, or routing before the input reaches the RAG module does not change this code"
+            },
+            {
+              "code": "user-action",
+              "definition": "An interface action other than language input necessarily leads to retrieval under the system's fixed workflow, such as clicking, selecting, touching, dragging, drawing, uploading, or gesturing. Fixed processing after the action does not change the trigger"
+            },
+            {
+              "code": "agent-initiated",
+              "definition": "An LLM or agent dynamically decides whether or when to retrieve while performing a task, such as by calling a retrieval tool through function calling. Even if user input starts the task, use this code when retrieval depends on the model's own judgment"
+            },
+            {
+              "code": "system-rule-triggered",
+              "definition": "The system uses a predefined rule to decide whether to retrieve. The rule may be based on user or interface state, environmental signals, the output of an earlier module, or a dedicated prediction model. Unlike user-query and user-action, the user input or action only starts the process and does not guarantee retrieval; retrieval still depends on a later rule"
+            },
+            {
+              "code": "scheduled",
+              "definition": "Retrieval is driven by time and runs on a fixed schedule or in batches, without depending on user input or an event signal"
+            },
+            {
+              "code": "not_reported",
+              "definition": "The trigger is not described."
+            }
+          ]
+        },
+        {
+          "code": "B5",
+          "name": "Retrieval Query Formation",
+          "selection": "Multi-select",
+          "description": null,
+          "codes": [
+            {
+              "code": "raw-query",
+              "definition": "In this pipeline, the user's input is used directly for retrieval without any processing"
+            },
+            {
+              "code": "query-construction",
+              "definition": "The retrieval query is not derived by transforming a user-provided language query. Instead, the system or agent constructs it from a trigger signal or task context. Examples include queries based on behavioral signals, screen or navigation state, sensor or audio features, vector aggregation, or an agent's interpretation of the task context"
+            },
+            {
+              "code": "query-contextualization",
+              "definition": "Enriches an existing user query with contextual information, such as screen content, selected text, conversation history, or a user profile. The distinction from query-construction is whether a user-submitted query exists as the starting point"
+            },
+            {
+              "code": "query-rewriting",
+              "definition": "Rewrites a language query into a form that is more suitable for retrieval"
+            },
+            {
+              "code": "query-decomposition",
+              "definition": "Splits a complex query into multiple subqueries that are retrieved separately"
+            },
+            {
+              "code": "entity/keyword-extraction",
+              "definition": "Extracts entities, keywords, or structured parameters from the input for retrieval"
+            },
+            {
+              "code": "intent-routing",
+              "definition": "Identifies the intent of the input and routes it to different knowledge sources or retrieval strategies"
+            },
+            {
+              "code": "not_reported",
+              "definition": "Query processing is not described"
+            }
+          ]
+        },
+        {
+          "code": "B7",
+          "name": "Retrieval Method",
+          "selection": "Multi-select",
+          "description": "How the initial candidate set is produced from the knowledge base.",
+          "codes": [
+            {
+              "code": "semantic-similarity",
+              "definition": "Dense-vector cosine similarity or another distance measure in embedding space"
+            },
+            {
+              "code": "keyword-matching/BM25",
+              "definition": "BM25, TF-IDF, or another sparse lexical matching method based on keywords"
+            },
+            {
+              "code": "graph-traversal",
+              "definition": "Retrieval over a graph structure, such as path traversal, neighbor expansion, or topological relevance"
+            },
+            {
+              "code": "rule-based",
+              "definition": "Matches entry properties using predefined deterministic conditions, such as exact or range matching on metadata fields, tags, categories, dates, or numerical ranges. The implementation may use SQL, API parameters, or filtering code"
+            },
+            {
+              "code": "external-search-service",
+              "definition": "Retrieval is delegated to an external search service, such as a search engine API or platform search interface. The service controls the matching and ranking logic, which is opaque to the system"
+            },
+            {
+              "code": "structural-similarity",
+              "definition": "Retrieves existing entries by comparing their explicit structural representations, such as abstract syntax trees using tree edit distance. The selection criterion is structural similarity, rather than lexical overlap or embedding similarity."
+            },
+            {
+              "code": "not_reported",
+              "definition": "The retrieval method is not described"
+            }
+          ]
+        },
+        {
+          "code": "B8",
+          "name": "Post-retrieval Selection / Reranking",
+          "selection": "Multi-select",
+          "description": "Selection and ordering of retrieved entries before injection; these operations do not change entry content.",
+          "codes": [
+            {
+              "code": "none",
+              "definition": "The initial retrieval results, such as top-k results, are injected directly without a second selection or reranking step"
+            },
+            {
+              "code": "rule-based",
+              "definition": "Uses predefined rules to filter, weight, or rerank retrieved candidates"
+            },
+            {
+              "code": "model-based-reranking",
+              "definition": "A learned model reranks, further filters, or reassesses the relevance of already retrieved candidates. Includes LLM-based assessment and other learned rerankers. Initial retrieval and deterministic rule-based score fusion are excluded."
+            },
+            {
+              "code": "user-selection",
+              "definition": "Retrieval first produces a candidate set; the user keeps, excludes, or orders candidate entries; the resulting set supplies the corresponding subsequent generation. Manual ordering is not required. Editing entry content, editing generated output, or changing a query followed by a new retrieval does not by itself establish this code. Building a reusable corpus is distinct unless the selected current set also explicitly feeds that generation."
+            },
+            {
+              "code": "not_reported",
+              "definition": "The paper does not state whether a second-stage selection step exists"
+            }
+          ]
+        },
+        {
+          "code": "B9",
+          "name": "Retrieved Content Form",
+          "selection": "Multi-select",
+          "description": "The overall organization of the retrieval unit, rather than the contents of its individual fields.",
+          "codes": [
+            {
+              "code": "natural-language-text",
+              "definition": "Human-readable natural-language text. The retrieval unit itself is continuous natural-language text without a structured wrapper; webpage text belongs here."
+            },
+            {
+              "code": "structured-data",
+              "definition": "Tables, JSON, triples, statistics, or other structured formats. A schema-based unit of fields and values belongs here even when individual values contain natural-language descriptions."
+            },
+            {
+              "code": "code",
+              "definition": "Executable or formal content, such as code snippets, SQL scripts, or automation rules"
+            },
+            {
+              "code": "image",
+              "definition": "Static images"
+            },
+            {
+              "code": "video",
+              "definition": "Video clips"
+            },
+            {
+              "code": "not_reported",
+              "definition": "The content form is not described"
+            },
+            {
+              "code": "audio",
+              "definition": "Audio clips.",
+              "note": "Not used in the current corpus of 100 included papers."
+            }
+          ]
+        },
+        {
+          "code": "B10",
+          "name": "Post-retrieval Transformation",
+          "selection": "Multi-select",
+          "description": "Transformations of retrieved entry content before injection into a generative model, assessed in each generation round. Candidate filtering and reranking belong to B8.",
+          "codes": [
+            {
+              "code": "none",
+              "definition": "Retrieved content is injected directly, or is only serialized, formatted, or concatenated within the same representational form"
+            },
+            {
+              "code": "summarization",
+              "definition": "Retrieved content is compressed or summarized before injection"
+            },
+            {
+              "code": "verbalization",
+              "definition": "Structured, non-text, or sensor data is converted into natural language"
+            },
+            {
+              "code": "narrative-reformatting",
+              "definition": "Retrieved content is rewritten as a coherent narrative or story"
+            },
+            {
+              "code": "structured-formatting",
+              "definition": "Unstructured or heterogeneous content is organized into a designed schema, template, or classification system"
+            },
+            {
+              "code": "aggregation",
+              "definition": "A separate fusion step combines content from multiple sources or entries into a new composite, such as cross-source deduplication, merging records about the same entity, resolving conflicts, or combining outputs from multiple pipelines. Test: can each original entry still be identified as a separate item in the injected content? Listing entries separately, even from multiple sources, is concatenation and should be coded none; fusing them into a composite from which the original entries cannot be reconstructed is aggregation"
+            },
+            {
+              "code": "content-extraction",
+              "definition": "After search or selection identifies source documents or webpages, the system extracts their substantive text from the source container before supplying it to a generative model. Examples include extracting article text from retrieved webpages with Newspaper3k and extracting full text from selected paper PDFs with GROBID. Retrieving text already returned by an API does not alone establish a separate extraction operation. Distinguish this operation from semantic summarization and from document parsing performed to build an index (B2)."
+            },
+            {
+              "code": "visual-annotation",
+              "definition": "Adds visual marks to retrieved images before supplying them to the generative model, such as user-drawn marks on a retrieved reference UI screenshot. Merely selecting an image or displaying it without changing the model input does not qualify."
+            },
+            {
+              "code": "not_reported",
+              "definition": "The transformation is not described"
+            },
+            {
+              "code": "parameter-adjustment",
+              "definition": "When retrieved content consists of numbers or parameters, the values are scaled, calibrated, or adapted to the current user or context before injection. The form stays the same, but the values change.",
+              "note": "Not used in the current corpus of 100 included papers."
+            },
+            {
+              "code": "code-formatting",
+              "definition": "Retrieved content is formatted as code, a formal language, or structured instructions.",
+              "note": "Not used in the current corpus of 100 included papers."
+            }
+          ]
+        },
+        {
+          "code": "B11",
+          "name": "Generated Content Form",
+          "selection": "Multi-select; per-pipeline",
+          "description": "The output delivered to the user or downstream module after post-generation processing, rather than the raw LLM output.",
+          "codes": [
+            {
+              "code": "textual",
+              "definition": "Delivered as readable text or code. chat-message is delivered through a conversation stream; text is delivered in a page, block, or component text area"
+            },
+            {
+              "code": "structured-data",
+              "definition": "Delivered as a data structure, including inter-module payloads or user-facing representations that preserve rows, columns, or fields; often used in an intermediate pipeline"
+            },
+            {
+              "code": "2d-visual",
+              "definition": "Delivered as a two-dimensional visual product. Charts in which position, length, or color encodes data belong here"
+            },
+            {
+              "code": "layout",
+              "definition": "Delivered as a spatial arrangement. Use only when the arrangement is determined by the pipeline output; a designer-defined interface layout is not an output"
+            },
+            {
+              "code": "audio",
+              "definition": "Delivered as speech, music, or a sound effect"
+            },
+            {
+              "code": "numerical",
+              "definition": "Delivered as numerical parameters. In physical actuation settings, numerical parameters passed to the actuation module belong here"
+            },
+            {
+              "code": "3d-graphic",
+              "definition": "Delivered as a 3D model, 3D motion, or XR scene"
+            },
+            {
+              "code": "not_reported",
+              "definition": "The delivery form is not described."
+            }
+          ]
+        },
+        {
+          "code": "B12",
+          "name": "Knowledge Update Mechanisms",
+          "selection": "Multi-select",
+          "description": "Assess each knowledge source separately and combine its codes. Absence and update-mechanism codes may describe different sources within one system.",
+          "codes": [
+            {
+              "code": "none",
+              "definition": "By design, this source has no update mechanism or pathway for changing its content. Judge this from the system architecture, not from whether a change happened during the observation period"
+            },
+            {
+              "code": "expert-updated",
+              "definition": "Researchers, administrators, domain experts, or other non-end-user roles manually maintain and update the knowledge base"
+            },
+            {
+              "code": "user-updated",
+              "definition": "End users actively add, edit, or delete knowledge-base content through dedicated knowledge-management actions, such as a notes panel or document library"
+            },
+            {
+              "code": "interaction-adaptive",
+              "definition": "The system automatically incorporates explicit or implicit signals produced by the user's interaction with this system into the knowledge base, or uses them to condition later retrieval and generation. Explicit signals include ratings, corrections, labels or flags, and feedback. Implicit signals include gaze during interaction, behavior logs, and system inferences from user input"
+            },
+            {
+              "code": "ambient-capture",
+              "definition": "The system automatically captures sensory data from the user's physical environment, such as audio, video, or sensor signals, and uses it to update the knowledge base. The data is not produced by the user's interaction with this system and does not come from an external third-party source"
+            },
+            {
+              "code": "live-updated",
+              "definition": "The knowledge base is updated automatically from an external dynamic source in real time or at regular intervals, including batch or scheduled pulls"
+            },
+            {
+              "code": "not_reported",
+              "definition": "The update mechanism is not described"
+            }
+          ]
+        },
+        {
+          "code": "B13",
+          "name": "RAG’s Role in the Overall Pipeline",
+          "selection": "Single-select per pipeline; multi-select across pipelines",
+          "description": null,
+          "codes": [
+            {
+              "code": "terminal",
+              "definition": "The pipeline contains one or more RAG invocations, all of which serve a terminal role. A terminal invocation delivers its output to the user as an intended system output, directly or after presentation-only transformations. Later retention, reuse, or forwarding does not change this role. Incidental exposure in debugging interfaces, traces, or logs does not qualify."
+            },
+            {
+              "code": "intermediate",
+              "definition": "The pipeline contains one or more RAG invocations, all of which serve an intermediate role. An intermediate invocation supplies downstream modules exclusively and is not itself delivered to the user as an intended system output."
+            },
+            {
+              "code": "hybrid",
+              "definition": "The same pipeline contains two or more RAG invocations, with at least one serving an intermediate role and at least one serving a terminal role. Any number of other modules may occur between the invocations, and the invocations need not involve the same RAG module: they may use different retrieval mechanisms or knowledge sources or be initiated by different agents. The determining factor is whether the invocations fall within the same pipeline as defined under Per-Pipeline Coding, not whether the same module is reused. Separate terminal and intermediate pipelines do not make either pipeline hybrid; combine their codes at the system level."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "letter": "C",
+      "name": "Transparency Design",
+      "fields": [
+        {
+          "code": "C1",
+          "name": "Transparency Design",
+          "selection": "Multi-select",
+          "description": "Transparency mechanisms directly related to RAG.",
+          "codes": [
+            {
+              "code": "none",
+              "definition": "After reviewing the full system description and all interface materials, no RAG-related transparency mechanism can be identified"
+            },
+            {
+              "code": "retrieval-disclosure",
+              "definition": "The system uses explicit interface elements, such as labels, loading states, or explanatory text, to tell the user that retrieval is in progress, has happened, or was triggered for a stated reason"
+            },
+            {
+              "code": "source-visible",
+              "definition": "The user can see retrieval sources, such as citations, links, document names, database names, or knowledge-base names"
+            },
+            {
+              "code": "evidence-visible",
+              "definition": "The knowledge content actually retrieved for the current answer is visible, and an explicit design mechanism lets the user identify which retrieved content served as evidence for the current answer. Examples include a separate evidence area, highlighted matching passages, or an indicator that opens the original document used for this answer"
+            },
+            {
+              "code": "retrieval-metadata-visible",
+              "definition": "The user can see quantitative or structured details of retrieval, such as similarity or relevance scores, candidate ranking, retrieval parameters (k or threshold), or the query that was executed"
+            },
+            {
+              "code": "answer-grounding-visible",
+              "definition": "The system makes the dependence between the answer and retrieved evidence visible to the user. This may be instance-level (mapping: a passage-level link showing which answer content corresponds to which evidence) or rule-level (policy: an explicit statement of how evidence must be used during generation)"
+            },
+            {
+              "code": "knowledge-base-visible",
+              "definition": "The user can understand the overall scope, content, or changes to the retrievable knowledge base, such as browsable documents, slides, transcriptions, or lists of available knowledge, as well as statements about knowledge boundaries and update notices. Showing these materials alone does not mean that they were actually retrieved for the current answer"
+            },
+            {
+              "code": "uncertainty-visible",
+              "definition": "The system exposes uncertainty states such as retrieval failure, low confidence, or no results, for example \"no relevant document found,\" a confidence score, or an empty-result message"
+            },
+            {
+              "code": "not_reported",
+              "definition": "Interface materials are missing or too incomplete to judge."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "letter": "D",
+      "name": "User Control Design",
+      "fields": [
+        {
+          "code": "D1",
+          "name": "User Control Design",
+          "selection": "Multi-select",
+          "description": "User intervention in the RAG pipeline, whether or not users are consciously aware of RAG.",
+          "codes": [
+            {
+              "code": "none",
+              "definition": "After reviewing the full system description and all interface materials, no mechanism for user control over RAG can be identified"
+            },
+            {
+              "code": "query-control",
+              "definition": "The user influences retrieval directly or indirectly through natural-language input, keywords, or prompts. Natural-language input alone remains query-control; retrieval-control requires a dedicated setting or interface action."
+            },
+            {
+              "code": "knowledge-control",
+              "definition": "The user can add, edit, delete, or organize items in a reusable knowledge base, thereby changing the content or membership of the corpus available to RAG"
+            },
+            {
+              "code": "retrieval-control",
+              "definition": "For the same task instance, the user can directly control whether retrieval occurs or how it runs. This includes limiting the current search to particular existing sources, documents, collections, or time ranges; changing k, thresholds, or retrieval strategy; and providing feedback that is explicitly used to change later retrieval. The control must be separable from task initiation. Starting a task or selecting its object does not qualify merely because it triggers retrieval. Changing the reusable corpus belongs to knowledge-control."
+            },
+            {
+              "code": "evidence-control",
+              "definition": "The user acts on presented retrieved results, evidence, or the knowledge basis used in the current generation by selecting, reordering, excluding, confirming, or modifying it. The material must be connected to generation, but control may operate at the UI level and need not affect a subsequent generation. Structured or editable representations of the adopted knowledge can qualify when that connection is established. Arbitrary output editing does not qualify. This category can overlap with knowledge-control; B8 user-selection additionally requires that the resulting candidate set feed subsequent generation."
+            },
+            {
+              "code": "grounding-control",
+              "definition": "The user can control how a generated answer depends on retrieved content, such as requiring an answer based only on selected evidence, prioritizing certain sources, or forbidding external knowledge"
+            },
+            {
+              "code": "generation-control",
+              "definition": "The user can control how outputs generated from retrieved content are presented, such as changing the level of detail, switching between a summary and full quotation, or specifying the output format"
+            },
+            {
+              "code": "not_reported",
+              "definition": "Interface materials are missing or too incomplete to judge."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "letter": "E",
+      "name": "Paper Metadata",
+      "fields": [
+        {
+          "code": "E1",
+          "name": "Contribution Type",
+          "selection": "Multi-select",
+          "description": "Based on Wobbrock and Kientz (2016); use the authors' explicit contribution claims.",
+          "codes": [
+            {
+              "code": "empirical",
+              "definition": "A contribution that improves understanding through a user study, interview, observation, or survey"
+            },
+            {
+              "code": "artifact",
+              "definition": "A contribution in the form of a system, tool, or prototype"
+            },
+            {
+              "code": "methodological",
+              "definition": "A methodological contribution, such as a new research or evaluation method"
+            },
+            {
+              "code": "theoretical",
+              "definition": "A theoretical contribution, such as a framework, model, or design space"
+            },
+            {
+              "code": "dataset",
+              "definition": "A data contribution, such as a dataset, corpus, or benchmark"
+            }
+          ]
+        },
+        {
+          "code": "E2",
+          "name": "RAG-related Contribution Claims",
+          "selection": "Single-select",
+          "description": null,
+          "codes": [
+            {
+              "code": "yes",
+              "definition": "The paper explicitly presents RAG or an explicitly described retrieval mechanism as a contribution."
+            },
+            {
+              "code": "no",
+              "definition": "RAG or an explicitly described retrieval mechanism is used but is not stated as a contribution; it is only an implementation choice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "letter": "F",
+      "name": "Evaluation",
+      "fields": [
+        {
+          "code": "F1",
+          "name": "Evaluation Type",
+          "selection": "Multi-select",
+          "description": null,
+          "codes": [
+            {
+              "code": "formative-study",
+              "definition": "A needs-finding or exploratory study conducted before system design to identify problems and guide design decisions; it does not directly evaluate the system"
+            },
+            {
+              "code": "technical-evaluation",
+              "definition": "An evaluation focused on back-end, algorithmic, or model performance"
+            },
+            {
+              "code": "demonstration",
+              "definition": "A concrete use case, proof of concept, or demonstration of generalizability that shows system capability but is not a formal technical or user evaluation"
+            },
+            {
+              "code": "user-evaluation",
+              "definition": "An empirical evaluation in which target end users complete tasks or use the system"
+            },
+            {
+              "code": "expert-evaluation",
+              "definition": "An evaluation or review by domain experts who are not the target end users, including expert interviews, feedback from expert use, and heuristic reviews"
+            },
+            {
+              "code": "none",
+              "definition": "No evaluation was conducted.",
+              "note": "Not used in the current corpus of 100 included papers."
+            },
+            {
+              "code": "not_reported",
+              "definition": "The evaluation is not described."
+            }
+          ]
+        },
+        {
+          "code": "F2",
+          "name": "RAG-related Evaluations",
+          "selection": "Multi-select",
+          "description": "Evaluation that provides RAG-specific evidence, rather than only evaluating the overall system.",
+          "codes": [
+            {
+              "code": "none",
+              "definition": "The evaluation provides no RAG-specific evidence. RAG's effect can only be inferred indirectly from evaluation of the whole system, or the system was not evaluated"
+            },
+            {
+              "code": "retrieval-quality",
+              "definition": "Evidence about retrieval quality, such as precision/recall, MRR, NDCG, Hit@k, relevance, or coverage, including operational measures such as retrieval latency"
+            },
+            {
+              "code": "generation-quality",
+              "definition": "Evidence about the quality of retrieval-conditioned generation, such as faithfulness or grounding, answer accuracy, hallucination rate, or trust in answer content"
+            },
+            {
+              "code": "system-level-impact",
+              "definition": "Evidence from comparing a host system with and without RAG, showing RAG's contribution to downstream task performance, such as differences in task completion, efficiency, or user satisfaction, without separating internal retrieval or generation quality"
+            },
+            {
+              "code": "not_reported",
+              "definition": "The evaluation method is unclear."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "letter": "G",
+      "name": "RAG Limitations",
+      "fields": [
+        {
+          "code": "G1",
+          "name": "Potential RAG Limitations",
+          "selection": "Open coding",
+          "description": "Extract passages relevant to potential RAG limitations primarily from the Discussion and Limitations sections of each paper, retaining verbatim quotations. Preserve the authors’ distinctions between observed problems and potential risks. Topic labels may be assigned during coding to support subsequent grouping by category.",
+          "codes": []
+        }
+      ]
+    }
+  ]
+}
