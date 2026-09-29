@@ -5,7 +5,7 @@ import type { FieldDistribution } from "@/lib/analysis";
 
 export function CrossFieldAnalysis({ fields }: { fields: FieldDistribution[] }) {
   const [rowId, setRowId] = useState(fields.find(field => field.label.startsWith("B1 "))?.key ?? fields[0].key);
-  const [columnId, setColumnId] = useState(fields.find(field => field.label.startsWith("B12 "))?.key ?? fields[1].key);
+  const [columnId, setColumnId] = useState(fields.find(field => field.label.startsWith("B11 "))?.key ?? fields[1].key);
   const [selected, setSelected] = useState<{ row: string; column: string } | null>(null);
   const resultsRef = useRef<HTMLElement>(null);
   useEffect(() => {

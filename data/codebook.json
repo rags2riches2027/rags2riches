@@ -430,7 +430,7 @@
           ]
         },
         {
-          "code": "B7",
+          "code": "B6",
           "name": "Retrieval Method",
           "selection": "Multi-select",
           "description": "How the initial candidate set is produced from the knowledge base.",
@@ -466,7 +466,7 @@
           ]
         },
         {
-          "code": "B8",
+          "code": "B7",
           "name": "Post-retrieval Selection / Reranking",
           "selection": "Multi-select",
           "description": "Selection and ordering of retrieved entries before injection; these operations do not change entry content.",
@@ -494,7 +494,7 @@
           ]
         },
         {
-          "code": "B9",
+          "code": "B8",
           "name": "Retrieved Content Form",
           "selection": "Multi-select",
           "description": "The overall organization of the retrieval unit, rather than the contents of its individual fields.",
@@ -531,10 +531,10 @@
           ]
         },
         {
-          "code": "B10",
+          "code": "B9",
           "name": "Post-retrieval Transformation",
           "selection": "Multi-select",
-          "description": "Transformations of retrieved entry content before injection into a generative model, assessed in each generation round. Candidate filtering and reranking belong to B8.",
+          "description": "Transformations of retrieved entry content before injection into a generative model, assessed in each generation round. Candidate filtering and reranking belong to B7.",
           "codes": [
             {
               "code": "none",
@@ -585,7 +585,7 @@
           ]
         },
         {
-          "code": "B11",
+          "code": "B10",
           "name": "Generated Content Form",
           "selection": "Multi-select; per-pipeline",
           "description": "The output delivered to the user or downstream module after post-generation processing, rather than the raw LLM output.",
@@ -625,7 +625,7 @@
           ]
         },
         {
-          "code": "B12",
+          "code": "B11",
           "name": "Knowledge Update Mechanisms",
           "selection": "Multi-select",
           "description": "Assess each knowledge source separately and combine its codes. Absence and update-mechanism codes may describe different sources within one system.",
@@ -661,7 +661,7 @@
           ]
         },
         {
-          "code": "B13",
+          "code": "B12",
           "name": "RAG’s Role in the Overall Pipeline",
           "selection": "Single-select per pipeline; multi-select across pipelines",
           "description": null,
@@ -760,7 +760,7 @@
             },
             {
               "code": "evidence-control",
-              "definition": "The user acts on presented retrieved results, evidence, or the knowledge basis used in the current generation by selecting, reordering, excluding, confirming, or modifying it. The material must be connected to generation, but control may operate at the UI level and need not affect a subsequent generation. Structured or editable representations of the adopted knowledge can qualify when that connection is established. Arbitrary output editing does not qualify. This category can overlap with knowledge-control; B8 user-selection additionally requires that the resulting candidate set feed subsequent generation."
+              "definition": "The user acts on presented retrieved results, evidence, or the knowledge basis used in the current generation by selecting, reordering, excluding, confirming, or modifying it. The material must be connected to generation, but control may operate at the UI level and need not affect a subsequent generation. Structured or editable representations of the adopted knowledge can qualify when that connection is established. Arbitrary output editing does not qualify. This category can overlap with knowledge-control; B7 user-selection additionally requires that the resulting candidate set feed subsequent generation."
             },
             {
               "code": "grounding-control",
